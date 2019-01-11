@@ -5,9 +5,6 @@
 #   imageRegistry:
 
 image:
-  ## Bitnami MongoDB registry
-  ##
-  registry: docker.io
   ## Bitnami MongoDB image name
   ##
   repository: bitnami/mongodb
@@ -45,7 +42,6 @@ usePassword: true
 # mongodbPassword: password
 # mongodbDatabase: database
 
-
 ## Whether enable/disable IPv6 on MongoDB
 ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#enabling/disabling-ipv6
 ##
@@ -82,12 +78,13 @@ service:
   ##
   # nodePort:
 
+
 ## Setting up replication
 ## ref: https://github.com/bitnami/bitnami-docker-mongodb#setting-up-a-replication
 #
 replicaSet:
   ## Whether to create a MongoDB replica set for high availability or not
-  enabled: false
+  enabled: true
   useHostnames: true
 
   ## Name of the replica set
@@ -202,8 +199,8 @@ configmap:
 #      enabled: true
 #      pathPrefix: /opt/bitnami/mongodb/tmp
 #  # replica set options
-#  #replication:
-#  #  replSetName: replicaset
+#  replication:
+#    replSetName: replicaset
 #  # process management options
 #  processManagement:
 #     fork: false
@@ -214,15 +211,14 @@ configmap:
 #  # security options
 #  security:
 #    authorization: enabled
-#    #keyFile: /opt/bitnami/mongodb/conf/keyfile
+#    keyFile: /opt/bitnami/mongodb/conf/keyfile
 
 ## Prometheus Exporter / Metrics
 ##
 metrics:
-  enabled: false
+  enabled: true
 
   image:
-    registry: docker.io
     repository: forekshub/percona-mongodb-exporter
     tag: latest
     pullPolicy: IfNotPresent

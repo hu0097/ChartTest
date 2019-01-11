@@ -57,7 +57,6 @@ Create the name for the key secret.
 Return the proper MongoDB image name
 */}}
 {{- define "mongodb.image" -}}
-{{- $registryName := .Values.image.registry -}}
 {{- $repositoryName := .Values.image.repository -}}
 {{- $tag := .Values.image.tag | toString -}}
 {{/*
@@ -69,10 +68,10 @@ Also, we can't use a single if because lazy evaluation is not an option
     {{- if .Values.global.imageRegistry }}
         {{- printf "%s/%s:%s" .Values.global.imageRegistry $repositoryName $tag -}}
     {{- else -}}
-        {{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
+        {{- printf "%s:%s" $repositoryName $tag -}}
     {{- end -}}
 {{- else -}}
-    {{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
+    {{- printf "%s:%s" $repositoryName $tag -}}
 {{- end -}}
 {{- end -}}
 
@@ -80,9 +79,8 @@ Also, we can't use a single if because lazy evaluation is not an option
 Return the proper image name (for the metrics image)
 */}}
 {{- define "metrics.image" -}}
-{{- $registryName :=  .Values.metrics.image.registry -}}
 {{- $repositoryName := .Values.metrics.image.repository -}}
 {{- $tag := .Values.metrics.image.tag | toString -}}
-{{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
+{{- printf "%s:%s" $repositoryName $tag -}}
 {{- end -}}
 
