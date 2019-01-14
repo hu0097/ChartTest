@@ -4,7 +4,7 @@ appVersion: "1.0"
 description: hip hip hooray!!!
 keywords:
 - test
-icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
+icon: http://thyrsi.com/t6/656/1547436356x2728309394.png
 version: 0.1.0
 sources:
 - https://github.com/hu0097/ChartTest
